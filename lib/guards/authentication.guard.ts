@@ -21,7 +21,7 @@ export class AuthenticationGuard implements CanActivate {
     const apiKey = process.env.QUOTI_AUTH_API_KEY;
 
     let getUserData;
-    if (process.env.NODE_ENV === 'development') {
+    if (process.env.QUOTI_URL_DEV) {
       getUserData = async ({
         token,
         orgSlug,
