@@ -4,12 +4,9 @@ import {
   ExecutionContext,
   HttpException,
   HttpStatus,
+  Logger,
 } from '@nestjs/common';
-
 import { Request } from 'express';
-
-import { Logger } from '@nestjs/common';
-
 import { QuotiAuth } from 'quoti-auth';
 
 @Injectable()
@@ -22,19 +19,14 @@ export class AuthenticationGuard implements CanActivate {
     try {
       const userData = await this.quotiAuth.getUserData({
         token: `BearerStatic ${req.headers.bearerstatic}` as string,
-        orgSlug: this.quotiAuth.orgSlug
+        orgSlug: this.quotiAuth.orgSlug,
       });
 
       req.user = userData;
     } catch (error) {
       Logger.error(error);
       Logger.debug('Service account não autenticada');
-      throw new HttpException(
-        {
-          error: 'Service account não autenticada',
-        },
-        HttpStatus.FORBIDDEN,
-      );
+      return false;
     }
     return true;
   }
