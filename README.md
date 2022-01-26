@@ -43,7 +43,7 @@ export class AppModule implements NestModule {
 
 # Decorator @Auth
 
-# Autenticação
+## Autenticação
 
 A biblioteca possui um decorator `@Auth` que cuida da autenticação via Quoti
 Auth para qualquer rota de um controller. Para requerer **autenticação** do
@@ -69,7 +69,7 @@ uma chamada passando algum dos tokens de autenticação que o Quoti Auth permite
 na requisição. Caso isso não ocorra, o Nest irá automaticamente responder com
 status 401, Forbidden.
 
-# Autorização
+## Autorização
 
 Também é possível realizar chegagens de permissões com o decorator `@Auth`, ele
 aceita um array de arrays de string (`string[][]`) que contém quais permissões o
