@@ -7,7 +7,7 @@ import {
   CustomPermission,
 } from '../guards/authorization.guard';
 
-export function Auth(permissions: string[][] | CustomPermission) {
+export function Auth(permissions: string[][] | CustomPermission = [[]]) {
   return applyDecorators(
     SetMetadata('permissions', permissions),
     UseGuards(AuthenticationGuard, new AuthorizationGuard(new Reflector(), quotiAuth)),
