@@ -1,5 +1,32 @@
 # Introdução
-Essa biblioteca é um simples wrapper para o Quoti Auth. Ela possui um Module global que recebe os mesmos parâmetros que o método `setup()` do Quoti Auth e permite que uma única instância do Quoti Auth esteja disponível para toda a aplicação via Dependency Injection.
+Essa biblioteca é um simples wrapper para o Quoti Auth que é compatível com o Nest.js. Ela possui um módulo global que recebe os mesmos parâmetros que o método `setup()` do Quoti Auth e permite que uma única instância do Quoti Auth esteja disponível para toda a aplicação via Dependency Injection.
+
+# Requisitos
+Para utilizar esse package é necessário ter os packages `@nestjs/platform-express`, `@nestjs/common`, `@nestjs/core` e `quoti-auth` instalados no seu projeto (idealmente com a mesma versão que consta no package.json desse projeto), pois eles são [peer dependencies](https://nodejs.org/es/blog/npm/peer-dependencies/).
+
+# Setup
+O setup do Quoti Auth deve ser feito no módulo principal da aplicação, dessa forma o decorator `@Auth` poderá ser utilizado em qualquer lugar da aplicação. Por exemplo:
+```ts
+import { QuotiAuthModule } from 'quoti-auth-nestjs';
+
+@Module({
+  imports: [
+    ... outros módulos da API ...,
+
+    // O método .register recebe o mesmo objeto de configuração que o método .setup do Quoti Auth
+    QuotiAuthModule.register({
+      orgSlug: 'Slug da sua organização no Quoti',
+      apiKey: 'Sua API key para utilização do Quoti Auth',
+      ...
+    }),
+  ],
+  ...
+  providers: [...],
+})
+export class AppModule implements NestModule {
+  ...
+}
+```
 
 # Decorator @Auth
 
