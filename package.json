@@ -1,14 +1,26 @@
 {
   "name": "quoti-auth-nestjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Utils to help using Quoti Auth in Nest.js",
   "author": "Beyond Co.",
+  "keywords": ["quoti", "quoti-auth", "nestjs"],
   "license": "MIT",
   "main": "dist/index.js",
   "files": [
     "dist/**/*",
     "*.md"
   ],
+  "bugs": {
+    "url": "https://github.com/byndcloud/quoti-auth-nestjs/issues"
+  },
+  "engines": {
+    "node": "14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byndcloud/quoti-auth-nestjs.git"
+  },
+  "homepage": "https://github.com/byndcloud/quoti-auth-nestjs#readme",
   "scripts": {
     "prebuild": "rimraf dist",
     "prepublish:npm": "npm run build",
