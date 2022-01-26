@@ -1,6 +1,6 @@
 {
   "name": "quoti-auth-nestjs",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Utils to help using Quoti Auth in Nest.js",
   "author": "Beyond Co.",
   "license": "MIT",
@@ -16,7 +16,7 @@
     "build": "tsc -p tsconfig.json",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "dev": "nodemon --watch 'lib/' --exec 'npm run build' -e ts",
+    "dev": "nodemon --watch 'lib/' --exec './local-testing.sh' -e ts",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
@@ -28,26 +28,26 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "peerDependencies": {
-    "@nestjs/common": "^8.0.0",
-    "@nestjs/core": "^8.0.0",
-    "reflect-metadata": "^0.1.13"
+    "@nestjs/platform-express": "8.2.6",
+    "@nestjs/common": "8.2.6",
+    "@nestjs/core": "8.2.6",
+    "quoti-auth": "1.6.0"
   },
   "dependencies": {
-    "@nestjs/common": "^8.0.0",
-    "@nestjs/core": "^8.0.0",
-    "@nestjs/platform-express": "^8.0.0",
+    "reflect-metadata": "^0.1.13",
     "express": "^4.17.2",
     "nodemon": "^2.0.15",
-    "quoti-auth": "^1.6.0",
-    "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"
   },
   "devDependencies": {
+    "@nestjs/platform-express": "8.2.6",
+    "@nestjs/common": "8.2.6",
+    "@nestjs/core": "8.2.6",
+    "quoti-auth": "^1.6.0",
     "@types/express": "^4.17.13",
     "@types/jest": "27.0.2",
     "@types/node": "^16.0.0",
-    "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^8.0.1",
