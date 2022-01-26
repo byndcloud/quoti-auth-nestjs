@@ -5,21 +5,15 @@ import { QuotiAuth, quotiAuth, SetupConfig } from 'quoti-auth';
 @Module({})
 export class QuotiAuthModule {
   static register(quotiAuthSetupConfig: SetupConfig): DynamicModule {
-    quotiAuth.setup(quotiAuthSetupConfig)
+    quotiAuth.setup(quotiAuthSetupConfig);
+    const quotiAuthProvider = {
+      provide: QuotiAuth,
+      useValue: quotiAuth,
+    };
     return {
       module: QuotiAuthModule,
-      providers: [
-        {
-          provide: QuotiAuth,
-          useValue: quotiAuth,
-        },
-      ],
-      exports: [
-        {
-          provide: QuotiAuth,
-          useValue: quotiAuth,
-        },
-      ],
+      providers: [quotiAuthProvider],
+      exports: [quotiAuthProvider],
     };
   }
 }
