@@ -1,6 +1,6 @@
 {
   "name": "quoti-auth-nestjs",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Utils to help using Quoti Auth in Nest.js",
   "author": "Beyond Co.",
   "license": "MIT",
