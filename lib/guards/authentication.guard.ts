@@ -2,9 +2,7 @@ import {
   Injectable,
   CanActivate,
   ExecutionContext,
-  HttpException,
-  HttpStatus,
-  Logger,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { Request } from 'express';
 import { QuotiAuth } from 'quoti-auth';
@@ -24,9 +22,9 @@ export class AuthenticationGuard implements CanActivate {
 
       req.user = userData;
     } catch (error) {
-      Logger.error(error);
-      Logger.debug('Service account não autenticada');
-      return false;
+      throw new UnauthorizedException({
+        message: 'Invalid or missing Authorization, or BearerStatic header',
+      });
     }
     return true;
   }
