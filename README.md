@@ -11,7 +11,14 @@ Para utilizar esse package é necessário ter os packages
 `@nestjs/platform-express`, `@nestjs/common`, `@nestjs/core` e `quoti-auth`
 instalados no seu projeto (idealmente com a mesma versão que consta no
 package.json desse projeto), pois eles são
-[peer dependencies](https://nodejs.org/es/blog/npm/peer-dependencies/).
+[peer dependencies](https://nodejs.org/es/blog/npm/peer-dependencies/). As
+versões mínimas são as seguintes:
+```json
+"@nestjs/common": "8.2.6",
+"@nestjs/core": "8.2.6",
+"@nestjs/platform-express": "8.2.6",
+"quoti-auth": "^1.6.1"
+```
 
 # Setup
 
