@@ -15,8 +15,19 @@ export class AuthenticationGuard implements CanActivate {
     const req = context.switchToHttp().getRequest<Request>();
 
     try {
+      let token = req?.body?.token
+      if (req.headers.bearerstatic) {
+        token = `BearerStatic ${req.headers.bearerstatic}`
+      }
+      if (req.headers.authorization) {
+        token = `${req.headers.authorization}`
+      }
+      if (!token) {
+        throw new Error('Missing authentication')
+      }
+
       const userData = await this.quotiAuth.getUserData({
-        token: `BearerStatic ${req.headers.bearerstatic}` as string,
+        token,
         orgSlug: this.quotiAuth.orgSlug,
       });
 
